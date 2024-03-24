@@ -1,0 +1,67 @@
+{
+  "Main": {
+    "logo": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "logo"
+      }
+    },
+    "logo_heading": {
+      "type": "Text",
+      "config": {
+        "label": "Logo Heading"
+      }
+    },
+    "dropdown_title": {
+      "type": "Text",
+      "config": {
+        "label": "dropdown title"
+      }
+    },
+    "nav_links_dropdown": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "nav_link_label": {
+            "type": "Text",
+            "config": {
+              "label": "nav link label"
+            }
+          },
+          "nav_link_url": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "nav link url",
+              "select": null
+            }
+          }
+        },
+        "label": "Nav links dropdown"
+      }
+    },
+    "nav_links": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "link_label": {
+            "type": "Text",
+            "config": {
+              "label": "Link Label"
+            }
+          },
+          "link_url": {
+            "type": "Link",
+            "config": {
+              "label": "Link url",
+              "select": null
+            }
+          }
+        },
+        "label": "Nav links"
+      }
+    }
+  }
+}
