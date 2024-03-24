@@ -3,15 +3,22 @@ import Layout from "../layouts/Default.astro";
 import Carousel from "@components/Carousel";
 import CustomDialog from "@components/CustomDialog";
 import { client } from "../prismic";
-import { CarouselDocument } from "@/types/generated";
-const carousel = await client.getSingle<CarouselDocument>("carousel");
+import { HomepageDocument } from "@/types/generated";
+import { ImageField } from "@prismicio/client";
+const pageData = await client.getSingle<HomepageDocument>("homepage");
+const carousel = pageData.data.images;
 ---
 
 <Layout title="Home Page">
   <main class="min-h-full">
     <section class="container mx-auto py-8 px-4 sm:px-0">
       <Carousel client:load {carousel} />
-      <CustomDialog client:idle />
+      <CustomDialog client:idle 
+        dialogTitle={pageData.data.dialog_title as string} 
+        dialogContent={pageData.data.dialog_content as string}
+        closeButton={pageData.data.close_button as string}
+        buttonText={pageData.data.button_text as string}
+      />
     </section>
   </main>
 </Layout>

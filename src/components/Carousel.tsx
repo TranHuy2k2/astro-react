@@ -1,7 +1,7 @@
-import { CarouselDocument } from "@/types/generated";
+import { HomepageDocumentDataImagesItem } from "@/types/generated";
 
 interface CarouselProps {
-  carousel: CarouselDocument;
+  carousel: HomepageDocumentDataImagesItem[];
 }
 
 export default function Carousel(props: CarouselProps) {
@@ -13,7 +13,7 @@ export default function Carousel(props: CarouselProps) {
       data-carousel="slide"
     >
       <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-        {carousel?.data.images.map((image) => (
+        {carousel.map((image) => (
           <div
             key={image.image.url}
             className="hidden duration-700 ease-in-out z-10"

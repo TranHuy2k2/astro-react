@@ -2,15 +2,23 @@ import { button } from "@/variants";
 import { Dialog, Portal } from "@ark-ui/react";
 import { useEffect, useRef, useState } from "react";
 
-export default function CustomDialog() {
+interface CustomDialogProps {
+  dialogTitle: string;
+  dialogContent: string;
+  closeButton: string;
+  buttonText: string;
+}
+
+export default function CustomDialog(props: CustomDialogProps) {
+  const { dialogTitle, dialogContent, closeButton, buttonText } = props;
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!isOpen && dialogRef.current) {
       dialogRef.current.classList.remove("animate__wobble");
-      dialogRef.current.classList.add("animate__bounceOut");
+      dialogRef.current.classList.add("animate__zoomOut");
     } else {
-      dialogRef.current?.classList.remove("animate__bounceOut");
+      dialogRef.current?.classList.remove("animate__zoomOut");
       dialogRef.current?.classList.add("animate__wobble");
     }
   }, [isOpen]);
@@ -23,7 +31,7 @@ export default function CustomDialog() {
         })}
         onClick={() => setIsOpen(true)}
       >
-        Open Dialog
+        {buttonText}
       </button>
       <Dialog.Root open={isOpen} onOpenChange={(e) => setIsOpen(e.open)}>
         <Portal>
@@ -34,13 +42,13 @@ export default function CustomDialog() {
               className="bg-white rounded-lg p-6 max-w-sm mx-auto z-30 animate__animated"
             >
               <Dialog.Title className="text-xl font-bold mb-2">
-                Dialog Title
+                {dialogTitle}
               </Dialog.Title>
               <Dialog.Description className="text-gray-500 mb-4">
-                Dialog Description
+                {dialogContent}
               </Dialog.Description>
               <Dialog.CloseTrigger className="text-blue-500 cursor-pointer">
-                Close
+                {closeButton}
               </Dialog.CloseTrigger>
             </Dialog.Content>
           </Dialog.Positioner>

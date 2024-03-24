@@ -1,0 +1,44 @@
+{
+  "Main": {
+    "button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Button text"
+      }
+    },
+    "dialog_title": {
+      "type": "Text",
+      "config": {
+        "label": "Dialog Title"
+      }
+    },
+    "dialog_content": {
+      "type": "Text",
+      "config": {
+        "label": "Dialog content"
+      }
+    },
+    "close_button": {
+      "type": "Text",
+      "config": {
+        "label": "close button"
+      }
+    },
+    "images": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "image"
+            }
+          }
+        },
+        "label": "images"
+      }
+    }
+  }
+}

@@ -47,42 +47,90 @@ interface CarouselDocumentData {
 export type CarouselDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<CarouselDocumentData>, "carousel", Lang>;
 
 /**
- * Content for Footer documents
+ * Item in *Homepage → images*
  */
-interface FooterDocumentData {
+export interface HomepageDocumentDataImagesItem {
 	/**
-	 * About us text field in *Footer*
+	 * image field in *Homepage → images*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: footer.about_us_text
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **API ID Path**: homepage.images[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
-	about_us_text: prismic.KeyTextField;
-	
-	/**
-	 * About us field in *Footer*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: footer.about_us
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	about_us: prismic.LinkField;
+	image: prismic.ImageField<never>;
 }
 
 /**
- * Footer document from Prismic
+ * Content for Homepage documents
+ */
+interface HomepageDocumentData {
+	/**
+	 * Button text field in *Homepage*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.button_text
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	button_text: prismic.KeyTextField;
+	
+	/**
+	 * Dialog Title field in *Homepage*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.dialog_title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	dialog_title: prismic.KeyTextField;
+	
+	/**
+	 * Dialog content field in *Homepage*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.dialog_content
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	dialog_content: prismic.KeyTextField;
+	
+	/**
+	 * close button field in *Homepage*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.close_button
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	close_button: prismic.KeyTextField;
+	
+	/**
+	 * images field in *Homepage*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.images[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	images: prismic.GroupField<Simplify<HomepageDocumentDataImagesItem>>;
+}
+
+/**
+ * Homepage document from Prismic
  *
- * - **API ID**: `footer`
+ * - **API ID**: `homepage`
  * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, "footer", Lang>;
+export type HomepageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<HomepageDocumentData>, "homepage", Lang>;
 
 /**
  * Item in *Navigation → Nav links dropdown*
@@ -300,7 +348,7 @@ interface ProductDocumentData {
  */
 export type ProductDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<ProductDocumentData>, "product", Lang>;
 
-export type AllDocumentTypes = CarouselDocument | FooterDocument | NavigationDocument | ProductDocument;
+export type AllDocumentTypes = CarouselDocument | HomepageDocument | NavigationDocument | ProductDocument;
 
 declare module "@prismicio/client" {
 	interface CreateClient {
@@ -312,8 +360,9 @@ declare module "@prismicio/client" {
 			CarouselDocument,
 			CarouselDocumentData,
 			CarouselDocumentDataImagesItem,
-			FooterDocument,
-			FooterDocumentData,
+			HomepageDocument,
+			HomepageDocumentData,
+			HomepageDocumentDataImagesItem,
 			NavigationDocument,
 			NavigationDocumentData,
 			NavigationDocumentDataNavLinksDropdownItem,
