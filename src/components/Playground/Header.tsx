@@ -18,7 +18,6 @@ export default function Header(props: HeaderProps) {
   const { heading: headingList, description: descriptionList, image } = props;
   const heading = headingList[0];
   const description = descriptionList[0];
-  console.log(description);
   if (!heading || !description) return null;
   return (
     <div>
