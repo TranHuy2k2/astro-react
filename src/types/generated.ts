@@ -253,6 +253,55 @@ interface NavigationDocumentData {
  */
 export type NavigationDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
 
+/**
+ * Content for Playground documents
+ */
+interface PlaygroundDocumentData {
+	/**
+	 * Heading field in *Playground*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: playground.heading
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	heading: prismic.TitleField;
+	
+	/**
+	 * Description field in *Playground*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: playground.description
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+	
+	/**
+	 * Image field in *Playground*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: playground.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Playground document from Prismic
+ *
+ * - **API ID**: `playground`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PlaygroundDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<PlaygroundDocumentData>, "playground", Lang>;
+
 type ProductDocumentDataBodySlice = never
 
 /**
@@ -348,7 +397,7 @@ interface ProductDocumentData {
  */
 export type ProductDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<ProductDocumentData>, "product", Lang>;
 
-export type AllDocumentTypes = CarouselDocument | HomepageDocument | NavigationDocument | ProductDocument;
+export type AllDocumentTypes = CarouselDocument | HomepageDocument | NavigationDocument | PlaygroundDocument | ProductDocument;
 
 declare module "@prismicio/client" {
 	interface CreateClient {
@@ -367,6 +416,8 @@ declare module "@prismicio/client" {
 			NavigationDocumentData,
 			NavigationDocumentDataNavLinksDropdownItem,
 			NavigationDocumentDataNavLinksItem,
+			PlaygroundDocument,
+			PlaygroundDocumentData,
 			ProductDocument,
 			ProductDocumentData,
 			ProductDocumentDataBodySlice,

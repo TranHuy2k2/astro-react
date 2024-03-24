@@ -1,0 +1,24 @@
+---
+import { client } from "@/prismic";
+import { PlaygroundDocument } from "@/types/generated";
+import CustomDatePicker from "@components/Playground/Datepicker";
+import CustomCombobox from "@components/Playground/Combobox";
+import Header from "@components/Playground/Header"
+import Layout from "../layouts/Default.astro";
+
+
+const pageData = await client.getSingle<PlaygroundDocument>("playground")
+console.log(pageData.data.heading)
+---
+<Layout title="Home Page">
+<main class="min-h-full">
+    <section class="container mx-auto py-8 px-4 sm:px-0">
+        <Header heading={pageData.data.heading}
+            description={pageData.data.description}
+            image={pageData.data.image}
+        />
+        <CustomDatePicker client:load/>
+        <CustomCombobox client:load/>
+    </section>
+  </main>
+</Layout>

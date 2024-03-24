@@ -1,0 +1,26 @@
+{
+  "Main": {
+    "heading": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1,heading2,heading3",
+        "label": "Heading"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "strong,em",
+        "label": "Description"
+      }
+    },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image"
+      }
+    }
+  }
+}
