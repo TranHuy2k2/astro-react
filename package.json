@@ -6,14 +6,16 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "postinstall": "yarn upgrade"
   },
   "keywords": [
     "react",
     "astro",
-    "tailwindcss"
+    "tailwindcss",
+    "prismic"
   ],
-  "author": "Mohamed Samara (https://github.com/TranHuy2k2)",
+  "author": "Tran Huy (https://github.com/TranHuy2k2)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/TranHuy2k2/astro-react/issues"
