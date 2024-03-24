@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Default.astro";
+import Carousel from "@components/Carousel";
+import CustomDialog from "@components/CustomDialog";
+import { client } from "../prismic";
+import { CarouselDocument } from "@/types/generated";
+const carousel = await client.getSingle<CarouselDocument>("carousel");
+---
+
+<Layout title="Home Page">
+  <main class="min-h-full">
+    <section class="container mx-auto py-8 px-4 sm:px-0">
+      <Carousel client:load {carousel} />
+      <CustomDialog client:idle />
+    </section>
+  </main>
+</Layout>
