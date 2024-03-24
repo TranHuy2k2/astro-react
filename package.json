@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "^2.2.3",
+    "@astrojs/netlify": "^5.2.0",
     "@prismicio/client": "^7.3.1",
     "@prismicio/react": "^2.7.3",
     "@prismicio/types": "^0.2.8",
